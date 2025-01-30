@@ -27,10 +27,14 @@ void main(){
   });
 
 
-  test("Add negative value",(){
+  test("Add negative value throws exception", () {
     String numbers = "//;\n1;-2;3";
 
-    int result = CreateCalculator().addString(numbers);
-    expect(result, throw Exception("Negative value are not allowed"));
+    expect(
+          () => CreateCalculator().addString(numbers),
+      throwsA(predicate((e) =>
+      e is Exception && e.toString().contains("Negative values are not allowed")
+      )),
+    );
   });
 }
