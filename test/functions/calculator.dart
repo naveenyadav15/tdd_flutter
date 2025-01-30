@@ -25,4 +25,12 @@ void main(){
     int result = CreateCalculator().addString(numbers);
     expect(result, 6);
   });
+
+
+  test("Add negative value",(){
+    String numbers = "//;\n1;-2;3";
+
+    int result = CreateCalculator().addString(numbers);
+    expect(result, throw Exception("Negative value are not allowed"));
+  });
 }
